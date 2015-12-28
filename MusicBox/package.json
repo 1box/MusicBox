@@ -1,0 +1,13 @@
+{
+  "name": "MusicBox",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start"
+  },
+  "dependencies": {
+    "react-native": "^0.17.0",
+    "react-native-icons": "^0.7.0",
+    "react-native-scrollable-tab-view": "^0.3.3"
+  }
+}
