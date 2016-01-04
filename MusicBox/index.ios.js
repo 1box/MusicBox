@@ -151,13 +151,12 @@ var MusicBox = React.createClass({
 
 var styles = StyleSheet.create({
   tabbar: {
-    // color='white'
     height: TAB_BAR_HEIGHT,
   },
-  tabContent: {
-    flex: 1,
-    alignItems: 'center',
-  },
+  // tabContent: {
+  //   flex: 1,
+  //   alignItems: 'center',
+  // },
   tabText: {
     color: 'white',
     margin: 50,
@@ -168,6 +167,7 @@ var styles = StyleSheet.create({
     backgroundColor: 'black'
   },
   container: {
+    backgroundColor: 'yellow',
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT - TAB_BAR_HEIGHT,
   }
