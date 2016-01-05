@@ -106,7 +106,7 @@ var styles = StyleSheet.create({
   lower: {
     flex: 1,
     height: 140,
-    backgroundColor: 'purple',
+    backgroundColor: '#000',
   },
   record: {
     // flex: 1,
