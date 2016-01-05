@@ -18,7 +18,7 @@ var Fm = require('./fm')
 var GlobalPlayer = require('./globalPlayer')
 
 var SCREEN_WIDTH = require('Dimensions').get('window').width;
-var BaseConfig = Navigator.SceneConfigs.VerticalUpSwipeJump;
+var BaseConfig = Navigator.SceneConfigs.FadeAndroid;
 
 // var CustomLeftToRightGesture = Object.assign({}, BaseConfig.gestures.pop, {
 // 	snapVelocity: 8,
@@ -48,6 +48,7 @@ var Home = React.createClass({
 	},
 
 	render() {
+    // return <Fm navigator={navigator} />;
 		return (
 			<Navigator
 				initialRoute={{id: 1, }}

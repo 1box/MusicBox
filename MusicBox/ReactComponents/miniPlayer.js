@@ -11,7 +11,7 @@ var {
 
 var {AudioRecorder, AudioPlayer} = require('react-native-audio');
 var { Icon, } = require('react-native-icons');
-
+var Slider = require('react-native-slider');
 var Progress = require('react-native-progress');
 
 var NEXT_BUTTON_BG_WIDTH = 50;
@@ -28,6 +28,7 @@ var MiniPlayer = React.createClass({
   getInitialState() {
     return {
       currentTime: 0.0,
+      duration: 0.0,
       recording: false,
       stoppedRecording: false,
       stoppedPlaying: false,
@@ -82,10 +83,46 @@ var MiniPlayer = React.createClass({
     }
     AudioPlayer.play(PLAY_MP3_PATH);
     this.setState({playing: true});
+    this._updateProgress();
+  },
+
+  _updateProgress() {
+    // why error & duration reversed?
+    AudioPlayer.getCurrentTime((currentTime, error) => {
+      if (error) {
+        console.error('getCurrentTime' + error);
+      } else {
+        if (currentTime !== undefined) {
+          // console.log('getCurrentTime' + currentTime);
+          this.setState({currentTime: currentTime});
+        }
+      }
+    });
+    AudioPlayer.getDuration((duration, error) => {
+      if (error) {
+        console.error('getDuration' + error);
+      } else {
+        this.setState({duration: duration});
+      }
+    });
+
+    if (this.state.duration !== 0 && this.state.currentTime !== undefined) {
+      var progress = this.state.currentTime / this.state.duration;
+      // console.log('progress: ' + progress + ' for duration: ' + this.state.duration + ' and currentTime: ' + this.state.currentTime);
+      this.setState({progress: progress});
+    }
   },
 
   _refresh() {
     console.log('refreshing...');
+  },
+
+  _onValueChange(value) {
+    if (this.state.duration !== 0 && this.state.duration !== undefined) {
+      var currentTime = {value} * this.state.duration;
+      console.log('current time:' + currentTime + 'for value:' + value + 'and duration:' + AudioPlayer.getDuration());
+      AudioPlayer.setCurrentTime(currentTime);
+    }
   },
 
   _renderButton: function(title, onPress, active) {
@@ -149,9 +186,9 @@ var MiniPlayer = React.createClass({
   },
 
   render: function() {
-    // setTimeout((function() {
-    //   this.setState({ progress: this.state.progress + (0.4 * Math.random())});
-    // }).bind(this), 1000);
+    setTimeout((function() {
+      this._updateProgress();
+    }).bind(this), 1000);
 
     return (
       // <Text style={styles.progressText}>{this.state.currentTime}s</Text>
@@ -161,17 +198,12 @@ var MiniPlayer = React.createClass({
         <View style={styles.songName}>
           <Text style={styles.songNameText}>"I've Never Been before / Chet Baker"</Text>
         </View>
-        <Progress.Bar
-          style={styles.progress}
-          progress={this.state.progress}
-          unfilledColor={'#707982'}
-          color={'#55ddfd'}
-          borderWidth={0.5}
-          borderColor={'#000'}
-          width={300}
-          height={3}
-          borderRadius={0.5}
-        />
+        <View style={styles.slider}>
+          <Slider
+            value={this.state.progress}
+            onValueChange={(value) => this._onValueChange({value})} />
+        </View>
+
         <View style={styles.controls}>
           <TouchableHighlight style={styles.button} onPress={() => this._refresh()} underlayColor='null'>
             <Icon
@@ -188,6 +220,17 @@ var MiniPlayer = React.createClass({
           {this._renderButton('ion|ios-fastforward-outline', () => {this._stop()} )}
         </View>
       </View>
+      // <Progress.Bar
+      //   style={styles.progress}
+      //   progress={this.state.progress}
+      //   unfilledColor={'#707982'}
+      //   color={'#55ddfd'}
+      //   borderWidth={0.5}
+      //   borderColor={'#000'}
+      //   width={300}
+      //   height={3}
+      //   borderRadius={0.5}
+      // />
     );
   }
 });
@@ -210,18 +253,28 @@ var styles = StyleSheet.create({
     color: "#fff",
     // backgroundColor: "orange",
   },
-  prgress: {
+  progress: {
     // flex: 1,
-    position: 'relative',
-    top: 20,
-    height: 20,
+    // position: 'relative',
+    // top: 20,
+    // height: 20,
     // backgroundColor: "blue",
+  },
+  slider: {
+    // flex: 1,
+    // marginLeft: 10,
+    // marginRight: 10,
+    width: 300,
+    height: 30,
+    // alignItems: 'stretch',
+    // justifyContent: 'center',
+    // backgroundColor: 'purple',
   },
   controls: {
     // flex: 1,
     // flexDirection: 'row',
     position: 'absolute',
-    top: 75,
+    top: 85,
     left: 60,
     alignItems: 'center',
     justifyContent: 'center',

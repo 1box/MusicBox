@@ -164,7 +164,7 @@ var styles = StyleSheet.create({
   banner: {
     width: SCREEN_WIDTH,
     height: 40,
-    backgroundColor: 'black'
+    backgroundColor: '#000'
   },
   container: {
     backgroundColor: '#000',
