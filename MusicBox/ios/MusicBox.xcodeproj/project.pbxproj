@@ -26,6 +26,7 @@
 		CB6CFE2B1C3A5961004BA736 /* AudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFE281C3A5961004BA736 /* AudioPlayerManager.m */; };
 		CB6CFE2C1C3A5961004BA736 /* AudioRecorderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6CFE2A1C3A5961004BA736 /* AudioRecorderManager.m */; };
 		CB6CFE381C3A5EA5004BA736 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6CFE371C3A5EA5004BA736 /* AVFoundation.framework */; };
+		CB6CFE4F1C3B8CA5004BA736 /* x17196233.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CB6CFE4E1C3B8CA5004BA736 /* x17196233.mp3 */; };
 		CBC5E4D01C30300000DAE227 /* libReactNativeIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC5E4CF1C302FED00DAE227 /* libReactNativeIcons.a */; };
 		CBC5E4D71C30307400DAE227 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = CBC5E4D11C30307400DAE227 /* FontAwesome.otf */; };
 		CBC5E4D81C30307400DAE227 /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBC5E4D21C30307400DAE227 /* foundation-icons.ttf */; };
@@ -150,6 +151,7 @@
 		CB6CFE291C3A5961004BA736 /* AudioRecorderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioRecorderManager.h; path = "../node_modules/react-native-audio/ios/AudioRecorderManager.h"; sourceTree = "<group>"; };
 		CB6CFE2A1C3A5961004BA736 /* AudioRecorderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioRecorderManager.m; path = "../node_modules/react-native-audio/ios/AudioRecorderManager.m"; sourceTree = "<group>"; };
 		CB6CFE371C3A5EA5004BA736 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CB6CFE4E1C3B8CA5004BA736 /* x17196233.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = x17196233.mp3; path = ../Resources/mp3/x17196233.mp3; sourceTree = "<group>"; };
 		CBC5E4C01C302FEC00DAE227 /* ReactNativeIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeIcons.xcodeproj; path = "../node_modules/react-native-icons/ios/ReactNativeIcons.xcodeproj"; sourceTree = "<group>"; };
 		CBC5E4D11C30307400DAE227 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = "../node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/FontAwesome.otf"; sourceTree = "<group>"; };
 		CBC5E4D21C30307400DAE227 /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "foundation-icons.ttf"; path = "../node_modules/react-native-icons/ios/ReactNativeIcons/Libraries/FontAwesomeKit/foundation-icons.ttf"; sourceTree = "<group>"; };
@@ -323,7 +325,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				CB6CFE371C3A5EA5004BA736 /* AVFoundation.framework */,
+				CB6CFE651C3BBB6F004BA736 /* Frameworks */,
 				CBC5E4DD1C30307B00DAE227 /* Resources */,
 				13B07FAE1A68108700A75B9A /* MusicBox */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -354,6 +356,14 @@
 			name = "react-native-audio";
 			sourceTree = "<group>";
 		};
+		CB6CFE651C3BBB6F004BA736 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB6CFE371C3A5EA5004BA736 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CBC5E4C11C302FEC00DAE227 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +375,7 @@
 		CBC5E4DD1C30307B00DAE227 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CB6CFE4E1C3B8CA5004BA736 /* x17196233.mp3 */,
 				CBC5E4DE1C30308400DAE227 /* Fonts */,
 			);
 			name = Resources;
@@ -595,6 +606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBC5E4D71C30307400DAE227 /* FontAwesome.otf in Resources */,
+				CB6CFE4F1C3B8CA5004BA736 /* x17196233.mp3 in Resources */,
 				CBC5E4D81C30307400DAE227 /* foundation-icons.ttf in Resources */,
 				CBC5E4D91C30307400DAE227 /* ionicons.ttf in Resources */,
 				CBC5E4DA1C30307400DAE227 /* Material-Design-Iconic-Font.ttf in Resources */,

@@ -20,6 +20,9 @@ var PLAY_BUTTON_MARGIN = 10;
 var PLAY_BUTTON_BG_WIDTH = 60;
 var PLAY_BUTTON_WIDTH = 35;
 
+var PLAY_MP3_PATH = 'x17196233.mp3';//'../Resources/mp3/x17196233.mp3';
+var RECORD_FILE_PATH = '/test.wav'
+
 var MiniPlayer = React.createClass({
 
   getInitialState() {
@@ -35,14 +38,14 @@ var MiniPlayer = React.createClass({
   },
 
   componentDidMount() {
-    AudioRecorder.prepareRecordingAtPath('../Resources/mp3/x17196233.mp3')
-    AudioRecorder.onProgress = (data) => {
-      this.setState({currentTime: Math.floor(data.currentTime)});
-    };
-    AudioRecorder.onFinished = (data) => {
-      this.setState({finished: data.finished});
-      console.log(`Finished recording: ${data.finished}`)
-    };
+    // AudioRecorder.prepareRecordingAtPath(RECORD_FILE_PATH);
+    // AudioRecorder.onProgress = (data) => {
+    //   this.setState({currentTime: Math.floor(data.currentTime)});
+    // };
+    // AudioRecorder.onFinished = (data) => {
+    //   this.setState({finished: data.finished});
+    //   console.log(`Finished recording: ${data.finished}`)
+    // };
   },
 
   _previous() {
@@ -54,19 +57,15 @@ var MiniPlayer = React.createClass({
   },
 
   _pause: function() {
-    if (this.state.recording)
-      AudioRecorder.pauseRecording();
-    else if (this.state.playing) {
-      // AudioRecorder.pausePlaying();
+    if (this.state.playing) {
+      AudioPlayer.pause();
+      this.setState({playing: false});
     }
   },
 
   _stop: function() {
-    if (this.state.recording) {
-      AudioRecorder.stopRecording();
-      this.setState({stoppedRecording: true, recording: false});
-    } else if (this.state.playing) {
-      AudioRecorder.stopPlaying();
+    if (this.state.playing) {
+      AudioPlayer.stop();
       this.setState({playing: false, stoppedPlaying: true});
     }
   },
@@ -77,11 +76,11 @@ var MiniPlayer = React.createClass({
   },
 
  _play: function() {
-    if (this.state.recording) {
+    if (this.state.playing) {
       this._stop();
-      this.setState({recording: false});
+      this.setState({playing: false});
     }
-    AudioRecorder.playRecording();
+    AudioPlayer.play(PLAY_MP3_PATH);
     this.setState({playing: true});
   },
 
@@ -150,9 +149,9 @@ var MiniPlayer = React.createClass({
   },
 
   render: function() {
-    setTimeout((function() {
-      this.setState({ progress: this.state.progress + (0.4 * Math.random())});
-    }).bind(this), 1000);
+    // setTimeout((function() {
+    //   this.setState({ progress: this.state.progress + (0.4 * Math.random())});
+    // }).bind(this), 1000);
 
     return (
       // <Text style={styles.progressText}>{this.state.currentTime}s</Text>

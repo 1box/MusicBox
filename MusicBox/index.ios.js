@@ -167,7 +167,7 @@ var styles = StyleSheet.create({
     backgroundColor: 'black'
   },
   container: {
-    backgroundColor: 'yellow',
+    backgroundColor: '#000',
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT - TAB_BAR_HEIGHT,
   }
